@@ -1,0 +1,11 @@
+WHAT TO DO IN C:
+Data types
+
+Arrays
+Pointers
+Char, Strings
+
+Std lib;
+[ ] stdio.h
+[ ] stdlib.h
+[x] string.h

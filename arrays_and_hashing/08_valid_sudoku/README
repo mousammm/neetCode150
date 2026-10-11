@@ -62,7 +62,7 @@ Validate boxes
       ec = sc+2
       validBox(board, sr, er, sc, ec)
   
-  return true // if all 3 validate pass return true
+  return true // if all 3 validate pass
 
   validBox(board, sr, er, sc, ec)
     set<char> st

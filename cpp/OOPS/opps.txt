@@ -1,0 +1,9 @@
+Object oriented programming in CPP
+
+Class and Objects:
+
+Class: Blueprint:
+Objects: Entities in real world:
+
+
+
