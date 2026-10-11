@@ -1,0 +1,78 @@
+LeetCode(36) Valid Sudoku
+
+check input is valid
+    0 1 2 3 4 5 6 7 8
+  0 . 8 
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+
+Brute Force:
+ row(left-right): 1-9 no repetations
+ cols(up-down): 1-9 no repetations
+ box(3x3): 1-9 no repetations
+
+Validate Rows:
+  for (row 0<9)
+    set<int> st;
+    for (col 0<9)
+      char c = board[row][col];
+      // if the element is a . ignore
+      if(c == '.') continue;
+      // if the element repeats return false
+      if(st.count(c)) return false;
+      // if neither . nor repeats add it to set
+      st.insert(c));
+
+Validate Cols:
+  for (col 0<9)
+    set<int> st;
+    for (row 0<9)
+      char c = board[row][col];
+      // if the element is a . ignore
+      if(c == '.') continue;
+      // if the element repeats return false
+      if(st.count(c)) return false;
+      // if neither . nor repeats add it to set
+      st.insert(c));
+
+Validate boxes
+
+  (sr: 0, er: 0+2)         
+     (sc: 0, ec: 0+2)
+     (sc: 3, ec: 3+2)
+     (sc: 6, ec: 3+2)  
+  (sr: 3, er: 3+2)         
+     (sc: 0, ec: 0+2)
+     (sc: 3, ec: 3+2)
+     (sc: 6, ec: 3+2)   
+  (sr: 6, er: 6+2)         
+     (sc: 0, ec: 0+2)
+     (sc: 3, ec: 3+2)
+     (sc: 6, ec: 3+2)   
+
+  for (sr=0; sr<9; sr+=3)
+    er = sr+2
+    for (sc=0; sc<9; sc+=3)
+      ec = sc+2
+      validBox(board, sr, er, sc, ec)
+  
+  return true // if all 3 validate pass return true
+
+  validBox(board, sr, er, sc, ec)
+    set<char> st
+    for(i=sr; i<=er; i++)
+      for(i=sc; i<=ec; i++)
+        char c = board[i][j];
+        // if the element is a . ignore
+        if(c == '.') continue;
+        // if the element repeats return false
+        if(st.count(c)) return false;
+        // if neither . nor repeats add it to set
+        st.insert(c));
+    return true
