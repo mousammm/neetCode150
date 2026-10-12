@@ -36,3 +36,8 @@ stdout
   file/pipe:      (full buffered) flush on full, fflush, fclose, exit
 stderr:           (unbuffered)    every call gets the os
 file/pipe/socket: (full buff)     flush on full, fflush, fclose, exit
+
+# Flushing and buffering
+fflush(fp) force buffer -> OS (output only; NULL = all)
+setvbuf(fp, buf, mode, size) set buffering (_IONBF/_IOLBF/_IOFBF)
+setbuf(fp, buf) simple version (NULL = unbuffered)
