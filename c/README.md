@@ -1,13 +1,14 @@
 # LIB C & POSIX
 ```
-ISO C / stdlibc(libc)
+ISO C / stdard libary
   FLOW: app -> glibc -> os(kernel)
-  glibc musl bionic msvcrt
+  DIFF STDLIB:
+    glibc, musl, bionic, msvcrt
 
 POSIX(Portable OS Interface)
-  Its is blueprint, rulebook
-  any posix c code can compile in any posix complient os
-  It standardies
+  Its a blueprint, rulebook.
+  Any POSIX c code can compile in any POSIX complient os.
+  It STANDARDIES:
     syscalls
     cmd line utilities
     shell scripting(/usr/bin)
@@ -15,7 +16,10 @@ POSIX(Portable OS Interface)
 
 # About C
 ```
-  c89/c90: also called ANSII C
+c89/c90: also called ANSII C
+c99: stable and mature
+c11: modern
+c17: idk
 
 Compilation:
   .c -> preprocessor -> .i   gcc -E main.c > main.i
@@ -48,7 +52,7 @@ Linking:
 * sys/types
 * sys/socket
 
-# POSIX EXT
+# POSIX extension
 * sys/stat
 * sys/mman
 * sys/wait
