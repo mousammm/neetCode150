@@ -1,0 +1,20 @@
+FLUSING
+  /* no flushing */
+  printf("Hello world");
+  for (;;) { }
+  /* output : nothing */
+
+  /* with flushing */
+  printf("Hello world");
+  fflush(stdout);
+  for (;;) { }
+  /* output : Hello world */
+
+stdin:
+  terminal:       (unbuffered)    goes directly to os
+  file/pipe:      (full buffered) flush on full, fflush, fclose, exit
+stdout
+  terminal:       (new line buff) flush on full, fflush, fclose, exit, \n
+  file/pipe:      (full buffered) flush on full, fflush, fclose, exit
+stderr:           (unbuffered)    every call gets the os
+file/pipe/socket: (full buff)     flush on full, fflush, fclose, exit
