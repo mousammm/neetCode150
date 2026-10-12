@@ -1,34 +1,33 @@
-# Length
-* strlen() / strnlen()
+# [01_basic.c](./01_basic.c)
+* **strlen/strnlen()**:
+* **strdup/strndup()**: 
 
-# Duplicate:
-* strdup() / strndup()
+# [02_cpy_cat.c](./02_cpy_cat.c)
+* **strcpy/strncpy**:
+* **stpcpy/stpncpy**:
+* **strcat/strncat**:
 
-# Copying:
-* strcpy/strncpy && stpcpy/stpncpy
+# [03_cmp.c](./03_cmp.c)
+* **strcmp/strncmp**:
+* **strcasecmp/strncasecmp**:
 
-# Concatination:
-* strcat/strncat
+# [04_tok.c](./04_tok.c)
+* **strtok**: ignore.
+* **strtok_r**: multiple delimeter count as one.
+* **strsep**: multiple delimeter as different.
 
-# Compare:
-* strcmp/strncmp
-* strcasecmp/strncasecmp
-
-# Searching:
-* strchr/strnchr
-* strpbrk/strspn/strcspn
-* strstr/strcasestr
-* memmem
-* strchrnul
-
-# Tokenization:
-* strtok / strtok_r / strsep
+# [./05_search.c](./05_search.c)
+* **strchr/strnchr**:
+* **strpbrk/strspn/strcspn**:
+* **strstr/strcasestr**:
+* **memmem**:
+* **strchrnul**:
 
 # Fun stuff:
-* strfry
-* strverscmp
+* **strfry**:
+* **strverscmp**:
 
-# Memory Fun:
+# Memory Fun
 * memset: set a block of memory
 * memcpy/memmove/mempcpy: cpy(no overlaping/with overlaping)
 * memchr/memrchr: search (forward/backward)

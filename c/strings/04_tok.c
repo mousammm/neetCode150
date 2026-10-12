@@ -2,31 +2,38 @@
 #include <string.h>
 
 /*
- * strtok()
- * strtok_t()
- * strsep()
+  strtok()
+    not thread safe (ignore)
+  strtok_t()
+    thread safe
+    ;;; is 1
+  strsep()
+    ;;; is 3
  */
 
-#if 0
-  char* str = strdup("This is a string");
-  char* tok = strtok(str, " ");
+int main()
+{
+  char* str = strdup("cat:dog:;cow:kela:;;nana:;;lol");
+  char* tok;
 
+#if 0 /* strtok */
   while(tok != NULL) {
     printf("%s\n", tok);
     tok = strtok(NULL, " ");
   }
-}
 #endif
 
-int main()
-{
-  char* str = strdup("cat:dog,dogi:kela:nana::lol");
-  char* tok;
-  char* str_r = str; // save pointer
-
-  while((tok = strtok_r(str_r, ":,", &str_r))) {
+#if 0 /* strtok_t */
+  while((tok = strtok_r(str, ":,", &str))) {
     printf("%s\n", tok);
   }
+#endif
+
+#if 1 /* strsep */
+  while((tok = strsep(&str, ",:;")) != NULL) {
+    printf("%s\n", tok);
+  }
+#endif
 
   return 0;
 }
