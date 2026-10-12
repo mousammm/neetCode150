@@ -1,6 +1,11 @@
-WHAT TO DO IN C:
-Data types
+POSIX and STDLIB
+Underline process of compilation gcc
 
+Data types
+Control flow
+loops
+
+Data stuctures
 Arrays
 Pointers
 Char, Strings
