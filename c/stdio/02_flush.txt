@@ -1,4 +1,4 @@
-FLUSING
+FLUSING:
   /* no flushing */
   printf("Hello world");
   for (;;) { }
@@ -10,8 +10,26 @@ FLUSING
   for (;;) { }
   /* output : Hello world */
 
+Q What is buffering?
+> Buffer :
+  a temp holding area inside FILE* 
+  instead of one syscall per byte,
+  we batch a whole chunk.
+
+[ our buffer in FILE* ]   <- buffering (stdio)
+        │ fflush()
+        V
+[ OS page cache ]         <- kernel's own buffer
+        │ fsync()
+        V
+    [ disk ]
+
+Q Why buffered or why wait can't we sent it directly to os?
+> to avoid syscall per bytes
+
+BUFFRING IN FILE*:
 stdin:
-  terminal:       (unbuffered)    goes directly to os
+  terminal:       (new line buff) goes directly to os
   file/pipe:      (full buffered) flush on full, fflush, fclose, exit
 stdout
   terminal:       (new line buff) flush on full, fflush, fclose, exit, \n
