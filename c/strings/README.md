@@ -1,6 +1,6 @@
 # [01_basic.c](./01_basic.c)
-* **strlen/strnlen()**:
-* **strdup/strndup()**: 
+* **strlen/strnlen**:
+* **strdup/strndup**: 
 
 # [02_cpy_cat.c](./02_cpy_cat.c)
 * **strcpy/strncpy**:
@@ -16,7 +16,7 @@
 * **strtok_r**: multiple delimeter count as one.
 * **strsep**: multiple delimeter as different.
 
-# [./05_search.c](./05_search.c)
+# [05_search.c](./05_search.c)
 * **strchr/strnchr**:
 * **strpbrk/strspn/strcspn**:
 * **strstr/strcasestr**:
@@ -27,8 +27,8 @@
 * **strfry**:
 * **strverscmp**:
 
-# Memory Fun
-* memset: set a block of memory
-* memcpy/memmove/mempcpy: cpy(no overlaping/with overlaping)
-* memchr/memrchr: search (forward/backward)
-* memcmp: compare 2 memory blocks
+# [06_mem.c](./06_mem.c)
+* **memset**: set a block of memory
+* **memcpy/memmove/mempcpy**: cpy(no overlaping/with overlaping)
+* **memchr/memrchr**: search (forward/backward)
+* **memcmp**: compare 2 memory blocks
