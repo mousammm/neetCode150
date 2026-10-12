@@ -30,7 +30,6 @@ Bytes:
 Fun stuff
   ungetc
   setvbuf and fsync
-
 #endif
 
 int main()

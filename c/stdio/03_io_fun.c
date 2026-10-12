@@ -9,12 +9,12 @@ FILE:
   remove: remove a file
   rename: rename a file
 
-File seeking
+File seeking:
   fseek : get to the specified pos
   ftell : current position
   rewind: back to start
 
-# Error/status
+Error/status:
   perror(msg) : print msg + system error to stderr
   errno       : global error code (set on failure)
 #endif
