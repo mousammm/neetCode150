@@ -38,6 +38,6 @@ Linking:
 
 ## [compiling c prog](./gcc)
 ## [basic of c](./ancii)
-## [glic](./lib)
+## [glibc](./lib)
 ## [posix](./posix)
 ## [vendor](./vendor)
