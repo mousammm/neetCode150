@@ -5,6 +5,7 @@
 * [ctype]()
 * [math]()
 * [stdint]()
+* [stdargs]()
 * [assert](./assert.c)
 * [errno](./errno.c)
 
