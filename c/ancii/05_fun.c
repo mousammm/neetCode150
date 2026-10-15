@@ -42,11 +42,31 @@ enum   N* f();
 #endif
 
 #if 0 /* FUNCTION POINTER */
-// funP takes a char, return a <int fun(int, int)>
-int (*funP(char c))(int, int);
 
-typedef int (*FUNP)(int, int);
-FUNP funP(getC);
+                  // return
+int *a(int a);    // * to int
+int (*a)(int a);  // * to <int x(int)>
+
+int (*)(int);        // type of function
+int (*f)(int) = add; // decalare and init fun pointer
+
+// array of fun pointer
+int (*fun[])(int, int) = { add, sub };
+fun[0] = add; // <int add(int, int)>
+fun[1] = add; // <int sub(int, int)>
+
+// fun * as fun argument eg qsort
+int f(int a, bool (*val)(int));
+
+// returning fun pointer
+// takes:  fun(int c);
+// return: <int name(int, int)>
+int fun(int c) {
+  return <int fun(int, int)>;
+}
+int (*fun(int c))(int, int) {
+  return add;
+}
 #endif
 
 int main() { return 0; }
