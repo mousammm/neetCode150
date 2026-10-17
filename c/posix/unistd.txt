@@ -1,0 +1,80 @@
+<unistd.h> POSIX OS Services Header
+
+Process Control
+├── fork()          → create child process
+├── exec family     → replace process image
+│   ├── execl(), execv()
+│   ├── execle(), execve()
+│   ├── execlp(), execvp()
+│   └── execvpe()
+├── _exit()         → terminate immediately (no cleanup)
+├── getpid()        → current PID
+├── getppid()       → parent PID
+├── getpgrp()       → process group
+├── setpgid()       → set process group
+├── setsid()        → new session
+├── getsid()        → session ID
+├── getuid()/geteuid() → user IDs
+├── getgid()/getegid() → group IDs
+├── nice()          → change priority
+└── sleep()/usleep()→ suspend execution
+
+File I/O
+├── read(fd, buf, n)
+├── write(fd, buf, n)
+├── close(fd)
+├── lseek(fd, off, whence)
+├── dup(fd)             → duplicate fd
+├── dup2(old, new)      → duplicate to specific fd
+├── pipe(fd[2])         → create pipe
+├── ftruncate()/truncate()
+├── fsync()/fdatasync() → flush to disk
+├── access(path, mode)  → check permissions
+├── unlink(path)        → remove file
+├── rmdir(path)
+├── link()/symlink()    → hard/soft links
+├── readlink()
+├── chdir()/fchdir()    → change directory
+├── getcwd()            → current working dir
+└── isatty(fd)          → is a terminal?
+
+Pipes / IPC
+├── pipe(fds[2])
+├── pipe2(fds, flags)   → with O_NONBLOCK/O_CLOEXEC
+└── (related: dup2 for redirection)
+
+System Info
+├── sysconf(name)       → runtime limits (e.g. _SC_PAGESIZE)
+├── pathconf()/fpathconf()
+├── confstr()
+├── gethostname()
+├── getpagesize()       → memory page size
+└── getopt()/getopt_long() → CLI argument parsing
+
+User & Terminal
+├── getlogin()
+├── getuid() / geteuid()
+├── getgid() / getegid()
+├── setuid() / seteuid()
+├── setgid() / setegid()
+├── ttyname(fd)
+├── tcgetpgrp() / tcsetpgrp()
+└── forkpty()-adjacent helpers (in some impls)
+
+Misc & Constants
+├── environ (extern char **)
+├── getenv()/setenv() → (note: stdlib, often paired)
+├── alarm(seconds)
+├── pause()
+├── chown()/fchown()
+├── Constants:
+│   ├── STDIN_FILENO  (0)
+│   ├── STDOUT_FILENO (1)
+│   ├── STDERR_FILENO (2)
+│   ├── _POSIX_VERSION
+│   ├── _SC_* (sysconf names)
+│   └── SEEK_SET/CUR/END
+└── Feature test macros:
+    ├── _POSIX_C_SOURCE
+    ├── _XOPEN_SOURCE
+    └── _GNU_SOURCE
