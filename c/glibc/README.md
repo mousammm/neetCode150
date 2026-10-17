@@ -1,13 +1,12 @@
 # ISO C / stdlib
-* [stdio](./stdio/)
-* [stdlib](./stdlib/)
+* !ok[stdio](./stdio/)
+* !ok[stdlib](./stdlib/)
 * [string](./strings/)
-* [ctype]()
-* [math]()
-* [stdint]()
-* [stdargs]()
+* !ok[ctype]()
+* !ok[math]()
+* !ok[stdint]()
+* !ok[stdargs]()
 * [assert](./assert.c)
-* [errno](./errno.c)
 
 ```
 different type of format specifiers and %s stuff
