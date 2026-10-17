@@ -1,0 +1,90 @@
+## GCC COMPILATION
+
+### 1. COMPILATION PHASES (the pipeline)
+```
+  gcc -E main.c -o main.i      → Preprocess (macros, #include)
+  gcc -S main.i -o main.s      → Compile to assembly
+  gcc -c main.s -o main.o      → Assemble to object
+  gcc main.o -o exe            → Link
+  └── (gcc main.c -o exe runs ALL four)
+```
+
+## 2. TWO WORKFLOW TYPES
+
+### TYPE 1: System-path libraries
+```
+Headers in /usr/include  → found automatically
+Libs in /usr/lib         → found automatically
+Template:
+  gcc [flags] -o exe main.c -pthread -lshared_lib
+
+```
+
+### TYPE 2: Local/relative-path libraries
+```
+Need -I for headers
+Need -L for libs at link time
+Need rpath for libs at RUN time
+Template:
+  gcc [flags] -Idir -Ldir -o exe file.c \
+    -lcustom_lib -Wl,-rpath,'$ORIGIN/rel'
+```
+
+## 3. FLAG CATEGORIES
+```
+LANGUAGE:     -std=c11 | c17 | c2x
+DEBUG:        -g (debug symbols for GDB/Valgrind)
+OPTIMIZATION: -O0 | -O1 | -O2 | -O3 | -Os
+WARNINGS:    -Wall -Wextra -Wpedantic   (enable)
+             -Werror (warnings -> errors)
+
+PREPROCESSOR:
+  -Dmacro[=def] (define)
+  -Umacro       (undefine; only overrides prior -D)
+  -Idir         (header search path — preprocess ONLY)
+
+CODE GENERATION:
+  -f...   (front/middle-end: -fPIC, -fopenmp, -fsanitize=)
+  -m...   (backend/target: -m64, -march=native, -mavx2)
+
+LINKING:
+  -Ldir      (lib search path — link time)
+  -lfoo      (-> looks for libfoo.so / libfoo.a)
+  -l:foo.so  (exact filename)
+  -pthread   (macro + link, must come AFTER sources)
+
+OUTPUT: -o <name>
+
+LINKER PASSTHROUGH:
+  -Wl,<opt>                  (passes <opt> directly to ld)
+  -Wl,-rpath,'$ORIGIN/rel'   (runtime search path)
+
+CRITICAL ORDERING RULES:
+  Libraries (-l, -pthread) MUST follow source/object files
+    [works] gcc main.c -o exe -lm
+    [fails] gcc -lm main.c -o exe   (fails with --as-needed)
+  -I, -L are directory flags → order-independent
+  $ORIGIN must be SINGLE-QUOTED (else shell eats it)
+
+INCLUDE SEARCH RULES:
+   #include <foo.h>  →  -I dirs -> system dirs
+   #include "foo.h"  →  current file's dir -> -I dirs -> system dirs
+ 
+LIBRARY NAMING CONVENTION (gotcha):
+   -lfoo        ->  searches for  libfoo.so  (or libfoo.a)
+   -l:exact.so  ->  uses exact filename
+   So a file named custom_lib.so needs: -l:custom_lib.so
+
+LINK vs RUNTIME:
+  -L           -> only helps the LINKER find the .so now
+  -Wl,-rpath   ->  tells the LOADER where to find it at run time
+  Inspect: readelf -d exe | grep -i path
+  Failure symptom: "cannot open shared object file"
+ 
+DEBUGGING CHEAT SHEET:
+   "my.h: No such file"          → add -I
+   "undefined reference to foo"  → move -lfoo AFTER sources
+   "cannot open shared object"   → add -Wl,-rpath,'$ORIGIN/…'
+   "relocation R_X86_64_PC32…"   → add -fPIC (building .so)
+   unwanted warnings             → -Wall -Wextra / -Werror
+```
